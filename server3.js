@@ -23,11 +23,11 @@ app.get('/', async (req, res) => {
 })
 app.get('/addNV', async (req, res) => {
     let name = req.query.nameNV
-    let address = req.query.addressNV
+    let age = req.query.ageNV
     let salary = parseInt(req.query.salaryNV)
     let nv = new nhanvienModel({
         ten: name,
-        diachi: address,
+        tuoi: age,
         luong: salary
 
     })
@@ -63,16 +63,15 @@ app.get('/upNV', async (req, res) => {
 })
 app.get('/upNV/update', async (req, res) => {
     let name = req.query.nameNV
-    let address = req.query.addressNV
+    let age = req.query.ageNV
     let salary = parseInt(req.query.salaryNV)
     let idNV = req.query.idNVien
     try {
         await mongoose.connect(uri)
-        await nhanvienModel.collection.updateOne({ _id: new mongodb.ObjectId(`${idNV}`)}, { $set: { ten: name, diachi:address, luong: salary } })
-        res.redirect('/')    
-        console.log("ok");    
+        await nhanvienModel.collection.updateOne({ _id: new mongodb.ObjectId(`${idNV}`)}, { $set: { ten: name, tuoi:age, luong: salary } })
+        res.redirect('/')        
     } catch (error) {
-        console.log("error");
+        
     }
 })
 app.listen(3000, (req, res) => {

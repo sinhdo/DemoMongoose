@@ -15,14 +15,14 @@
     <div class="container">
         <div class="row col-8 col-lg-5 m-auto mt-5 p-3 border border-primary border-4 bg-light-subtle rounded-3">
             <h2 class="rounded text-center text-white p-2  bg-primary bg-gradient">Sửa nhân viên</h2>
-            <form method="post" action="upNV/update">
+            <form method="get" action="upNV/update">
                 <div class="mb-3">
                     <label for="exampleInputName" class="form-label">Tên nhân viên:</label>
                     <input type="text" name="nameNV" class="form-control" id="exampleInputName" value={{nv.ten}}>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputPrice" class="form-label">Địa chỉ:</label>
-                    <input type="text" name="addressNV" class="form-control" id="exampleInputPrice" value={{nv.diachi}}>
+                    <label for="exampleInputPrice" class="form-label">Tuổi:</label>
+                    <input type="number" name="ageNV" class="form-control" id="exampleInputPrice" value={{nv.tuoi}}>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputColor" class="form-label">Lương</label>

@@ -4,8 +4,8 @@ const NhanVienSchema = new mongoose.Schema({
         type:String,
         require:true
     },
-    diachi:{
-        type:String
+    tuoi:{
+        type:Number
     },
     luong:{
         type:Number,

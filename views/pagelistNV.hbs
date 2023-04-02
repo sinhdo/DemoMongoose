@@ -13,8 +13,8 @@
                 <form action="addNV" method="get">
                     <label for="name" class="form-label">Tên nhân viên:</label>
                     <input type="text" class="form-control" name="nameNV" id="name">
-                    <label for="address" class="form-label">Địa chỉ:</label>
-                    <input type="text" class="form-control" name="addressNV" id="address">
+                    <label for="age" class="form-label">Tuổi:</label>
+                    <input type="number" class="form-control" name="ageNV" id="age">
                     <label for="salary" class="form-label">Lương:</label>
                     <input type="number" class="form-control" name="salaryNV" id="salary">
                     <div class="modal-footer">
@@ -26,12 +26,32 @@
         </div>
     </div>
 </div>
+{{!-- <div class="modal" tabindex="-1" role="dialog" id="dialogxoa"  data-bs-backdrop="static" data-bs-keyboard="false"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true"> 
+    <div class="modal-dialog" role="document" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div> --}}
 <table class="table table-striped">
-    <thead >
+    <thead>
         <tr>
             <th scope="col">STT</th>
             <th scope="col">Tên</th>
-            <th scope="col">Địa chỉ</th>
+            <th scope="col">Tuổi</th>
             <th scope="col">Lương</th>
             <th scope="col"></th>
         </tr>
@@ -41,15 +61,40 @@
         <tr>
             <th scope="row">{{@index}}</th>
             <td>{{ten}}</td>
-            <td>{{diachi}}</td>
+            <td>{{tuoi}}</td>
             <td>{{luong}}</td>
             <td>
                 <form method="get" action="upNV">
                     <button name="idEdit" value={{_id}} class="btn btn-info" type="submit">Sửa</button>
                 </form>
-                <form method="get" action="deleteNV">
-                    <button name="idNV" value={{_id}} class="btn btn-danger" type="submit">Xóa</button>
-                </form>
+                 <div class="container ml-4">
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#myModal">
+                                Xoá
+                            </button>
+                        </div>
+                        <!-- The Modal -->
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Do You Want To Remove This
+                                            Product</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form method="get" action="deleteNV">
+                                            <input type="hidden" name="idNV" value="{{_id}}" />
+                                            <button type="submit" class="btn btn-danger">Yes</button>
+                                        </form>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">No</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
             </td>
         </tr>
         {{/each}}
